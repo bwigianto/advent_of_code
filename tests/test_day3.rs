@@ -29,17 +29,24 @@ mod tests {
   #[test]
   fn problem3_2() {
     let file = File::open("src/day3/day3.txt").unwrap();
-    let triples = BufReader::new(file).lines()
-      .map(|line| triple(&line.unwrap()))
-      .collect();
-    triples.foo();
-    // transpose(triples)
-    //   .filter(|&tri| lib::valid_triangle(tri))
-    //   .count();
-    // assert_eq!(triangles, 1050);
+    let mut v1 = Vec::new();
+    let mut v2 = Vec::new();
+    let mut v3 = Vec::new();
+    for triple in BufReader::new(file).lines()
+      .map(|line| triple(&line.unwrap())) {
+      v1.push(triple.0);
+      v2.push(triple.1);
+      v3.push(triple.2);
+    }
+    v1.append(&mut v2);
+    v1.append(&mut v3);
+    let triangles = v1
+      .chunks(3)
+      .map(|x| (x[0], x[1], x[2]))
+      .filter(|&tri| lib::valid_triangle(tri))
+      .count();
+    assert_eq!(triangles, 1921);
   }
-
-  // fn transpose()
 
   fn triple(line: &str) -> (i32, i32, i32) {
     let mut iter = line.trim().split_whitespace();
