@@ -17,6 +17,7 @@ mod tests {
   }
 
   #[test]
+  #[ignore]
   fn problem3_1() {
     let file = File::open("src/day3/day3.txt").unwrap();
     let triangles = BufReader::new(file).lines()
@@ -27,6 +28,7 @@ mod tests {
   }
 
   #[test]
+  #[ignore]
   fn problem3_2() {
     let file = File::open("src/day3/day3.txt").unwrap();
     let mut v1 = Vec::new();
