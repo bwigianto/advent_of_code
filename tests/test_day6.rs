@@ -19,7 +19,7 @@ mod tests {
 
     #[test]
     fn combine_two_maps() {
-        let mut maps = lib::vec_map("as");
+        let maps = lib::vec_map("as");
         let c = lib::combine(&maps[0], &maps[1]);
         assert_eq!(c.len(), 2);
         assert_eq!(c.get(&'a').unwrap(), &1);
@@ -28,7 +28,7 @@ mod tests {
 
     #[test]
     fn conflate_two_maps() {
-        let mut maps = lib::vec_map("a");
+        let maps = lib::vec_map("a");
         let c = lib::combine(&maps[0], &maps[0]);
         assert_eq!(c.len(), 1);
         assert_eq!(c.get(&'a').unwrap(), &2);
@@ -55,6 +55,7 @@ mod tests {
     }
 
     #[test]
+    #[ignore]
     fn part1() {
         let file = File::open("src/day6/input.txt").unwrap();
         let v: String = BufReader::new(file).lines()
@@ -73,6 +74,7 @@ mod tests {
     }
 
     #[test]
+    #[ignore]
     fn part2() {
         let file = File::open("src/day6/input.txt").unwrap();
         let v: String = BufReader::new(file).lines()
